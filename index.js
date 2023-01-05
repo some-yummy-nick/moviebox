@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const PORT = process.env.PORT
-const URL = process.env.URL
+const DB_URL = process.env.DB_URL
 
 const app = express()
 
@@ -15,7 +15,7 @@ app.use(movieRoutes)
 mongoose.set('strictQuery', false)
 
 mongoose
-  .connect(URL, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.log(`DB connection error: ${err}`))
 
